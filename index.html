@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+            class Person {
+    constructor(name, age) {
+        this.name = name;
+        this.age = age;
+        this.child = null; // Referência ao filho
+    }
+    }
+
+    class LinkedList {
+        constructor() {
+            this.head = null; // Primeiro elemento da lista
+    }
+
+    append(name, age) {
+        const newPerson = new Person(name, age);
+
+        if (!this.head) {
+            this.head = newPerson;
+            return;
+        }
+
+        let current = this.head;
+        while (current.child) {
+            current = current.child;
+        }
+
+        current.child = newPerson;
+    }
+
+    display() {
+        let current = this.head;
+        while (current) {
+            console.log(`Name: ${current.name}, Age: ${current.age}`);
+            current = current.child;
+        }
+    }
+    }
+
+
+    const peopleList = new LinkedList();
+
+    peopleList.append("Alice", 30);
+    peopleList.append("Bob", 25);
+    peopleList.append("Charlie", 40);
+
+
+    peopleList.display();      
+ </script>
+</body>
+</html>
